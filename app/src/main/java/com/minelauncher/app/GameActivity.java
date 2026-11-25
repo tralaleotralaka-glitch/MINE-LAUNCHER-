@@ -90,7 +90,7 @@ public class GameActivity extends Activity implements GameSurfaceView.Listener {
         surface.sensitivity = sens;
 
         infoChip.setText(modeName(gamemode) + " · " + version + " · " + nickname);
-        loadingText.setText("Генерация мира «" + worldName + "»…");
+        loadingText.setText("Генерация мира «" + worldName + "»…\nЭто может занять несколько секунд");
         fpsChip.setVisibility(showFps ? View.VISIBLE : View.GONE);
 
         buildHotbar();

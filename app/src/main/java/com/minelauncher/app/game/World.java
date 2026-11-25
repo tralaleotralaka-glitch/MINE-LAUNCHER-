@@ -76,15 +76,24 @@ public class World {
             for (int z = 0; z < SZ; z++) {
                 double rolling = fbm(x * 0.017, z * 0.017, seed, 4);
                 double mountain = fbm(x * 0.0055 + 40.0, z * 0.0055 + 40.0, seed + 977L, 3);
-                double ridge = mountain * mountain * mountain;
-                int top = (int) Math.round(20.0 + rolling * 17.0 + ridge * 34.0);
+                double ridge = Math.pow(Math.max(0.0, mountain - 0.40) / 0.60, 2.0);
+                int top = (int) Math.round(30.0 + (rolling - 0.5) * 25.0 + ridge * 34.0);
                 if (top < 5) top = 5;
                 if (top > SY - 12) top = SY - 12;
 
                 set(x, 0, z, BlockTypes.BEDROCK);
                 for (int y = 1; y < top - 3; y++) set(x, y, z, BlockTypes.STONE);
                 for (int y = Math.max(1, top - 3); y < top; y++) set(x, y, z, BlockTypes.DIRT);
-                int surface = (top <= SEA + 1) ? BlockTypes.SAND : BlockTypes.GRASS;
+                int surface;
+                if (top > 46) {
+                    surface = BlockTypes.SNOW;
+                } else if (top > 42) {
+                    surface = BlockTypes.STONE;
+                } else if (top <= SEA + 1) {
+                    surface = BlockTypes.SAND;
+                } else {
+                    surface = BlockTypes.GRASS;
+                }
                 set(x, top, z, surface);
                 for (int y = top + 1; y <= SEA; y++) set(x, y, z, BlockTypes.WATER);
             }
@@ -96,7 +105,7 @@ public class World {
         Random rnd = new Random(seed * 31L + 7L);
         for (int x = 4; x < SX - 4; x++) {
             for (int z = 4; z < SZ - 4; z++) {
-                if (rnd.nextFloat() > 0.016f) continue;
+                if (rnd.nextFloat() > 0.008f) continue;
                 int top = surfaceHeight(x, z);
                 if (top <= SEA + 2) continue;
                 if (get(x, top, z) != BlockTypes.GRASS) continue;

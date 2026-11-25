@@ -60,6 +60,7 @@ public class GameSurfaceView extends GLSurfaceView implements GLSurfaceView.Rend
     private final ConcurrentLinkedQueue<int[]> rebuildQueue = new ConcurrentLinkedQueue<int[]>();
     private volatile boolean meshing;
     private int buildIndex;
+    private boolean readyNotified;
 
     public GameSurfaceView(Context context) {
         super(context);
@@ -82,6 +83,17 @@ public class GameSurfaceView extends GLSurfaceView implements GLSurfaceView.Rend
 
     public void setListener(Listener l) {
         listener = l;
+    }
+
+    private void notifyReady() {
+        if (readyNotified) return;
+        readyNotified = true;
+        post(new Runnable() {
+            @Override
+            public void run() {
+                if (listener != null) listener.onWorldReady();
+            }
+        });
     }
 
     public World getWorld() {
@@ -108,14 +120,6 @@ public class GameSurfaceView extends GLSurfaceView implements GLSurfaceView.Rend
                 player.yaw = 0f;
                 player.pitch = 0f;
                 world = w;
-                if (listener != null) {
-                    post(new Runnable() {
-                        @Override
-                        public void run() {
-                            if (listener != null) listener.onWorldReady();
-                        }
-                    });
-                }
             }
         }, "world-generation").start();
     }
@@ -324,6 +328,7 @@ public class GameSurfaceView extends GLSurfaceView implements GLSurfaceView.Rend
         renderer.init();
         buildIndex = 0;
         meshing = true;
+        readyNotified = false;
         lastFrameNanos = 0;
         fpsWindowStart = System.nanoTime();
         fpsFrames = 0;
@@ -355,7 +360,10 @@ public class GameSurfaceView extends GLSurfaceView implements GLSurfaceView.Rend
                 renderer.buildChunk(w, buildIndex % World.CX, buildIndex / World.CX);
                 buildIndex++;
             }
-            if (buildIndex >= total) meshing = false;
+            if (buildIndex >= total) {
+                meshing = false;
+                notifyReady();
+            }
         }
 
         for (int i = 0; i < 4; i++) {
