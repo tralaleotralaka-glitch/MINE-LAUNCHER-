@@ -40,6 +40,15 @@ jobs:
           set -o pipefail
           gradle assembleDebug --no-daemon --stacktrace 2>&1 | tee build-log.txt
 
+      - name: Verify APK
+        run: |
+          APK=app/build/outputs/apk/debug/app-debug.apk
+          BT=$(ls -d "$ANDROID_HOME"/build-tools/* | sort -V | tail -1)
+          { ls -l "$APK"; "$BT/aapt2" dump badging "$APK" | head -12; echo "-- contents --"; unzip -l "$APK" | tail -15; } > info.txt
+          cat info.txt
+          MSG=$(awk '{printf "%s%%0A", $0}' info.txt)
+          echo "::notice title=apk-info::$MSG"
+
       - name: Collect APK
         run: |
           mkdir -p out
