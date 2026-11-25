@@ -197,7 +197,7 @@ public class World {
 
         int nx = 0, ny = 0, nz = 0;
         for (int i = 0; i < 256; i++) {
-            int t = Math.min(Math.min(tMaxX, tMaxY), tMaxZ);
+            double t = Math.min(Math.min(tMaxX, tMaxY), tMaxZ);
             if (t > maxDist) return null;
             int id = get(x, y, z);
             if (id != BlockTypes.AIR && id != BlockTypes.WATER) {
