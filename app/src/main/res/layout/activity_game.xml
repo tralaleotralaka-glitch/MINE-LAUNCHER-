@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FF000000">
+
+    <com.minelauncher.app.game.GameSurfaceView
+        android:id="@+id/surface"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.minelauncher.app.game.HudView
+        android:id="@+id/hud"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="false"
+        android:focusable="false" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|start"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/info_chip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/chip_bg"
+            android:paddingLeft="10dp"
+            android:paddingTop="4dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="4dp"
+            android:text="Выживание · 1.21.4"
+            android:textColor="#FFFFFFFF"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/fps_chip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/chip_bg"
+            android:paddingLeft="10dp"
+            android:paddingTop="4dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="4dp"
+            android:text="FPS 0"
+            android:textColor="#FFB7FF9A"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_pause"
+        android:layout_width="46dp"
+        android:layout_height="46dp"
+        android:layout_gravity="top|end"
+        android:layout_margin="10dp"
+        android:background="@drawable/game_button"
+        android:padding="0dp"
+        android:text="❚❚"
+        android:textColor="#FFFFFFFF"
+        android:textSize="14sp" />
+
+    <LinearLayout
+        android:id="@+id/hotbar"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="12dp"
+        android:gravity="bottom"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btn_fly"
+                android:layout_width="62dp"
+                android:layout_height="62dp"
+                android:background="@drawable/game_button"
+                android:padding="0dp"
+                android:text="✈"
+                android:textColor="#FFFFFFFF"
+                android:textSize="22sp" />
+
+            <Button
+                android:id="@+id/btn_break"
+                android:layout_width="62dp"
+                android:layout_height="62dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/game_button"
+                android:padding="0dp"
+                android:text="⛏"
+                android:textColor="#FFFFFFFF"
+                android:textSize="22sp" />
+
+            <Button
+                android:id="@+id/btn_place"
+                android:layout_width="62dp"
+                android:layout_height="62dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/game_button"
+                android:padding="0dp"
+                android:text="▣"
+                android:textColor="#FFFFFFFF"
+                android:textSize="22sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btn_jump"
+                android:layout_width="74dp"
+                android:layout_height="74dp"
+                android:background="@drawable/game_button"
+                android:padding="0dp"
+                android:text="▲"
+                android:textColor="#FFFFFFFF"
+                android:textSize="26sp" />
+
+            <Button
+                android:id="@+id/btn_down"
+                android:layout_width="74dp"
+                android:layout_height="62dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/game_button"
+                android:padding="0dp"
+                android:text="▼"
+                android:textColor="#FFFFFFFF"
+                android:textSize="22sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/loading_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FF101A12"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ProgressBar
+            android:layout_width="54dp"
+            android:layout_height="54dp"
+            android:indeterminateTint="@color/green" />
+
+        <TextView
+            android:id="@+id/loading_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:letterSpacing="0.08"
+            android:text="@string/loading_world"
+            android:textColor="#FFFFFFFF"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/pause_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#C0000000"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/pause_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="18dp"
+            android:shadowColor="#FF000000"
+            android:shadowDx="3"
+            android:shadowDy="3"
+            android:shadowRadius="0"
+            android:text="@string/pause"
+            android:textColor="#FFFFFFFF"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btn_resume"
+            style="@style/McButton"
+            android:layout_width="260dp"
+            android:text="@string/resume" />
+
+        <Button
+            android:id="@+id/btn_quit"
+            style="@style/McButton"
+            android:layout_width="260dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/quit_to_menu" />
+    </LinearLayout>
+</FrameLayout>

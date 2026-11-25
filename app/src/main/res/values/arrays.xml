@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="versions">
+        <item>1.21.4 — Java Edition</item>
+        <item>1.20.1 — Java Edition</item>
+        <item>1.19.4 — Java Edition</item>
+        <item>1.18.2 — Java Edition</item>
+        <item>1.16.5 — Java Edition</item>
+        <item>1.12.2 — Java Edition</item>
+        <item>1.8.9 — Java Edition</item>
+        <item>1.7.10 — Java Edition</item>
+    </string-array>
+</resources>
