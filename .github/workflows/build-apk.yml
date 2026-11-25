@@ -36,7 +36,9 @@ jobs:
           ls "$ANDROID_HOME/platforms" || true
 
       - name: Build APK
-        run: gradle assembleDebug --no-daemon --stacktrace
+        run: |
+          set -o pipefail
+          gradle assembleDebug --no-daemon --stacktrace 2>&1 | tee build-log.txt
 
       - name: Collect APK
         run: |
@@ -50,6 +52,22 @@ jobs:
           name: MineLauncher-apk
           path: out/MineLauncher-1.0.apk
           if-no-files-found: error
+
+      - name: Save build log on failure
+        if: failure()
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          {
+            echo "# CI build log"
+            echo
+            echo '```'
+            tail -c 60000 build-log.txt || true
+            echo '```'
+          } > CI_BUILD_LOG.md
+          git add CI_BUILD_LOG.md
+          git commit -m "ci: build log [skip ci]" || exit 0
+          git push
 
       - name: Publish GitHub release with APK
         if: github.event_name != 'pull_request'
