@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.minelauncher.app.PanoramaView
+        android:id="@+id/panorama"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingLeft="26dp"
+        android:paddingRight="26dp">
+
+        <TextView
+            android:id="@+id/menu_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="6dp"
+            android:letterSpacing="0.1"
+            android:shadowColor="#FF000000"
+            android:shadowDx="4"
+            android:shadowDy="4"
+            android:shadowRadius="0"
+            android:text="MINE CRAFT"
+            android:textColor="#FFFFFFFF"
+            android:textSize="38sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/menu_subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="26dp"
+            android:letterSpacing="0.18"
+            android:shadowColor="#FF000000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="0"
+            android:text="Steve · 1.21.4"
+            android:textColor="#FFFFF07A"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btn_singleplayer"
+            style="@style/McButton"
+            android:text="@string/singleplayer" />
+
+        <Button
+            android:id="@+id/btn_settings"
+            style="@style/McButton"
+            android:layout_marginTop="10dp"
+            android:text="@string/settings" />
+
+        <Button
+            android:id="@+id/btn_exit"
+            style="@style/McButton"
+            android:layout_marginTop="10dp"
+            android:text="@string/exit" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/footer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="14dp"
+            android:gravity="center"
+            android:shadowColor="#FF000000"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="0"
+            android:text="Mine Launcher 1.0"
+            android:textColor="#CCFFFFFF"
+            android:textSize="11sp" />
+    </LinearLayout>
+</FrameLayout>

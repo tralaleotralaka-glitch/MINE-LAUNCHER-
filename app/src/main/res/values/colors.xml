@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bg_dark">#FF141A16</color>
+    <color name="panel">#FF2B2B2B</color>
+    <color name="panel_light">#FF3D3D3D</color>
+    <color name="edge_light">#FF9A9A9A</color>
+    <color name="edge_dark">#FF1A1A1A</color>
+    <color name="text_main">#FFFFFFFF</color>
+    <color name="text_dim">#FFB9B9B9</color>
+    <color name="green">#FF6CAE3C</color>
+    <color name="green_dark">#FF3E6B20</color>
+    <color name="sky">#FF6FA8DC</color>
+</resources>

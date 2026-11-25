@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Mine Launcher</string>
+    <string name="title">MINE LAUNCHER</string>
+    <string name="subtitle">Java Edition · Android</string>
+    <string name="nickname">Никнейм</string>
+    <string name="version">Версия</string>
+    <string name="play">ИГРАТЬ</string>
+    <string name="singleplayer">Одиночная игра</string>
+    <string name="settings">Настройки</string>
+    <string name="exit">Выход</string>
+    <string name="main_menu">Главное меню</string>
+    <string name="new_world">Создание мира</string>
+    <string name="world_name">Название мира</string>
+    <string name="seed">Сид (пусто — случайный)</string>
+    <string name="gamemode">Режим игры</string>
+    <string name="survival">Выживание</string>
+    <string name="creative">Творческий</string>
+    <string name="adventure">Приключение</string>
+    <string name="hardcore">Хардкор</string>
+    <string name="create_and_play">СОЗДАТЬ МИР И ИГРАТЬ</string>
+    <string name="back">Назад</string>
+    <string name="loading_world">Генерация мира…</string>
+    <string name="pause">Пауза</string>
+    <string name="resume">Продолжить</string>
+    <string name="quit_to_menu">Выйти в меню</string>
+    <string name="sensitivity">Чувствительность обзора</string>
+    <string name="show_fps">Показывать FPS</string>
+    <string name="controls_info">Управление:\n• Левая половина экрана — джойстик движения\n• Правая половина — обзор (свайп)\n• ▲ — прыжок / вверх (полёт)\n• ▼ — присесть / вниз (полёт)\n• ⛏ — сломать блок в прицеле\n• ▣ — поставить блок\n• ✈ — режим полёта (творческий)</string>
+</resources>
