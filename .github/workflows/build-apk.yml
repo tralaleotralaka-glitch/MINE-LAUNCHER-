@@ -56,18 +56,13 @@ jobs:
       - name: Save build log on failure
         if: failure()
         run: |
-          git config --local user.name "github-actions[bot]"
-          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          {
-            echo "# CI build log"
-            echo
-            echo '```'
-            tail -c 60000 build-log.txt || true
-            echo '```'
-          } > CI_BUILD_LOG.md
-          git add CI_BUILD_LOG.md
-          git commit -m "ci: build log [skip ci]" || exit 0
-          git push
+          { echo "# CI build log"; echo; echo '```'; tail -c 60000 build-log.txt 2>/dev/null || echo "(gradle produced no log)"; echo '```'; } > CI_BUILD_LOG.md
+          ls -la CI_BUILD_LOG.md
+          git add -f CI_BUILD_LOG.md
+          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -m "ci: build log [skip ci]" --allow-empty
+          git push origin HEAD:${GITHUB_REF#refs/heads/}
+          MSG=$(tail -c 2500 build-log.txt 2>/dev/null | awk '{printf "%s%%0A", $0}')
+          echo "::error title=gradle failure::$MSG"
 
       - name: Publish GitHub release with APK
         if: github.event_name != 'pull_request'
